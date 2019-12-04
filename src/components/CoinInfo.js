@@ -15,32 +15,44 @@ const CoinInfo = props => {
       homepage: [''],
     },
   })
-
   useEffect(() => {
-    axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/${currentCoin.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false`
-      )
-      .then(res => {
-        console.log(res.data)
-        setCoinDetails(res.data)
-      })
-      .catch(err => console.log(err))
+    currentCoin &&
+      axios
+        .get(
+          `https://api.coingecko.com/api/v3/coins/${currentCoin.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false`
+        )
+        .then(res => setCoinDetails(res.data))
+        .catch(err => console.log(err))
   }, [currentCoin])
 
   return (
-    <div>
-      <img
-        className='coin__logo'
-        src={currentCoin.image}
-        alt={currentCoin.name}
-      />
-      <h1>{currentCoin.name}</h1>
-      <h2>Market Cap Rank: {currentCoin.market_cap_rank}</h2>
-      <h3>Current Price: {currentCoin.current_price}</h3>
-      <p>Date Created: {coinDetails.genesis_date}</p>
-      <div><Markup content={coinDetails.description.en} /></div>
-      <a href={coinDetails.links.homepage[0]}>Learn More</a>
+    <div className='content'>
+      {currentCoin && (
+        <>
+          <h1 className='info__content'>{currentCoin.name}</h1>
+          <img
+            className='coin__logo'
+            src={currentCoin.image}
+            alt={currentCoin.name}
+          />
+          <h2 className='info__content'>
+            Market Cap Rank: #{currentCoin.market_cap_rank}
+          </h2>
+          <h3 className='info__content'>
+            Current Price: ${currentCoin.current_price}
+          </h3>
+        </>
+      )}
+      <h4 className='info__content'>
+        Date Created:{' '}
+        {coinDetails.genesis_date ? coinDetails.genesis_date : 'unknown'}
+      </h4>
+      <div>
+        <Markup content={coinDetails.description.en} />
+      </div>
+      <a className='learn__more' href={coinDetails.links.homepage[0]}>
+        Click Here to Learn More
+      </a>
     </div>
   )
 }
