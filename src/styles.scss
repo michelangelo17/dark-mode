@@ -145,13 +145,22 @@ h1 {
 }
 
 h2 {
+  font-size: 2.2rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
   font-size: 1.8rem;
 }
-
-h4 {
-  font-size: 1.4rem;
+p {
+  font-size: 1.6rem;
 }
-
+a {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: black;
+}
 img {
   height: auto;
   width: 100%;
@@ -228,9 +237,10 @@ img {
 
 .coin__title {
   display: block;
-  margin-left: 8px;
-    min-width: 160px;
-text-align: left;
+  min-width: 160px;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 10px;
 }
 
 .coin__symbol {
@@ -240,6 +250,7 @@ text-align: left;
 
 .coin__logo {
   width: 50px;
+  margin-bottom: 10px;
 }
 
 .dark-mode {
@@ -247,7 +258,35 @@ text-align: left;
   background-color: #313843;
 
   .navbar {
-    background-color: #1F2022;
+    background-color: #1f2022;
     border: none;
+  }
+  a {
+    color: #fff;
+  }
+  .content {
+    a {
+      color: palegoldenrod;
+    }
+  }
+}
+
+.content {
+  min-width: 300px;
+  width: 65%;
+  margin: 25px auto;
+  div {
+    font-size: 1.6rem;
+    margin: 25px 0;
+    line-height: 1.5;
+  }
+  a {
+    color: darkgoldenrod;
+  }
+  .info__content {
+    margin: 10px 0;
+  }
+  .learn__more {
+    font-size: 1.8rem;
   }
 }
